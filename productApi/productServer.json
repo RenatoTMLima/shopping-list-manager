@@ -1,0 +1,150 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Hortifruti"
+    },
+    {
+      "id": 2,
+      "name": "Limpeza"
+    },
+    {
+      "id": 3,
+      "name": "Higiene e cuidados pessoais"
+    },
+    {
+      "id": 4,
+      "name": "Mercearia"
+    },
+    {
+      "id": 5,
+      "name": "Congelados"
+    },
+    {
+      "id": 6,
+      "name": "Açougue"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Tomate 1kg",
+      "categoriesId": 1,
+      "price": 3.99
+    },
+    {
+      "id": 2,
+      "name": "Batata 1kg",
+      "categoriesId": 1,
+      "price": 2.59
+    },
+    {
+      "id": 3,
+      "name": "Cebola 1kg",
+      "categoriesId": 1,
+      "price": 3.39
+    },
+    {
+      "id": 4,
+      "name": "Abobrinha 1kg",
+      "categoriesId": 1,
+      "price": 4.29
+    },
+    {
+      "id": 5,
+      "name": "Detergente",
+      "categoriesId": 2,
+      "price": 1.09
+    },
+    {
+      "id": 6,
+      "name": "Sabão em pó",
+      "categoriesId": 2,
+      "price": 12.59
+    },
+    {
+      "id": 7,
+      "name": "Amaciante",
+      "categoriesId": 2,
+      "price": 6.99
+    },
+    {
+      "id": 8,
+      "name": "Água sanitária",
+      "categoriesId": 2,
+      "price": 3.99
+    },
+    {
+      "id": 9,
+      "name": "Sabonete",
+      "categoriesId": 3,
+      "price": 1.29
+    },
+    {
+      "id": 10,
+      "name": "Shampoo",
+      "categoriesId": 3,
+      "price": 19.99
+    },
+    {
+      "id": 11,
+      "name": "Desodorante",
+      "categoriesId": 3,
+      "price": 11.99
+    },
+    {
+      "id": 12,
+      "name": "Arroz 1kg",
+      "categoriesId": 4,
+      "price": 4.99
+    },
+    {
+      "id": 13,
+      "name": "Feijão 1kg",
+      "categoriesId": 4,
+      "price": 5.99
+    },
+    {
+      "id": 14,
+      "name": "Leite",
+      "categoriesId": 4,
+      "price": 3.89
+    },
+    {
+      "id": 15,
+      "name": "Peito de frango 1kg",
+      "categoriesId": 5,
+      "price": 12.99
+    },
+    {
+      "id": 16,
+      "name": "Pão de queijo 1kg",
+      "categoriesId": 5,
+      "price": 15.99
+    },
+    {
+      "id": 17,
+      "name": "Hamburguer bovino 12 unidades",
+      "categoriesId": 5,
+      "price": 14.59
+    },
+    {
+      "id": 18,
+      "name": "Acém 1kg",
+      "categoriesId": 6,
+      "price": 25.99
+    },
+    {
+      "id": 19,
+      "name": "Patinho 1kg",
+      "categoriesId": 6,
+      "price": 26.99
+    },
+    {
+      "id": 20,
+      "name": "Contra filé 1kg",
+      "categoriesId": 6,
+      "price": 42.99
+    }
+  ]
+}
