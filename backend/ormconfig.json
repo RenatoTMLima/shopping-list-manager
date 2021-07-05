@@ -1,0 +1,10 @@
+{
+  "type": "better-sqlite3",
+  "database": "dist/shared/database/shoppingList.db",
+  "synchronize": false,
+  "entities": ["dist/domain/**/entities/*.entity.js"],
+  "migrations": ["dist/shared/database/migrations/*.js"],
+  "cli": {
+    "migrationsDir": "src/shared/database/migrations"
+  }
+}
