@@ -19,7 +19,6 @@ export class ShoppingList {
   @OneToMany(
     (type) => ShoppingListProducts,
     (shoppingListProducts) => shoppingListProducts.shoppingList,
-    { cascade: true },
   )
   products: ShoppingListProducts[];
 }

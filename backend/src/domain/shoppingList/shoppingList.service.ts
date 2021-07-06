@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { ProductsRepository } from '../products/products.repository';
 import { ShoppingListRepository } from './repositories/shopingList.repository';
+import { ShoppingListProductsRepository } from './repositories/shoppingListProducts.repository';
 import { ShoppingList } from './entities/shoppingList.entity';
 import { CreateShoppingListDTO } from './dtos/createShoppingList.dto';
 
@@ -11,6 +12,8 @@ export class ShoppingListService {
   constructor(
     @InjectRepository(ShoppingListRepository)
     private shoppingListRepository: ShoppingListRepository,
+    @InjectRepository(ShoppingListProductsRepository)
+    private shoppingListProductsRepository: ShoppingListProductsRepository,
     private productsRepository: ProductsRepository,
   ) {}
 
@@ -50,12 +53,34 @@ export class ShoppingListService {
   async createOrUpdateShoppingList(
     shoppingListData: CreateShoppingListDTO,
   ): Promise<ShoppingList> {
-    return this.shoppingListRepository.createOrUpdateShoppingList(
-      shoppingListData,
+    const { products, ...shoppingList } = shoppingListData;
+
+    const createdShoppingList =
+      await this.shoppingListRepository.createOrUpdateShoppingList(
+        shoppingList,
+      );
+
+    if (!products || products.length === 0) return createdShoppingList;
+
+    const olderProductsList =
+      await this.shoppingListProductsRepository.getAllProductsFromShoppingList(
+        createdShoppingList.id,
+      );
+
+    const productsToRemove = olderProductsList.filter(
+      (older) => !products.find((product) => product.id === older.id),
     );
+
+    console.log(productsToRemove);
+
+    await this.shoppingListProductsRepository.deleteProducts(productsToRemove);
+
+    await this.shoppingListProductsRepository.createOrUpdateProducts(products);
+
+    return createdShoppingList;
   }
 
   async deleteShoppingList(id: number): Promise<void> {
-    return this.deleteShoppingList(id);
+    return this.shoppingListRepository.deleteShoppingList(id);
   }
 }

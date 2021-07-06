@@ -9,6 +9,7 @@ export default createGlobalStyle`
   }
   body {
     -webkit-font-smoothing: antialiased !important;
+    background-color: #fff9ea;
   }
   body, input, button {
     font-size: 14px;

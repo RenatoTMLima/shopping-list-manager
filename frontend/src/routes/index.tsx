@@ -1,13 +1,13 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
-import Route from './Route';
-
-//Imports de componentes de página aqui
+import { Home } from '../pages/Home'
+import { Products } from '../pages/Products'
 
 const Routes: React.FC = () => (
   <Switch>
-    {/* <Route path="/componente" component={Componente} /> */}
+    <Route path='/' exact component={Home} />
+    <Route path='/products' component={Products} />
   </Switch>
 );
 

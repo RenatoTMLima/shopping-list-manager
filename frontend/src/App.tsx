@@ -10,9 +10,7 @@ import GlobalStyles from './styles/global';
 
 const App: React.FC = () => (
   <Router>
-    <AppProvider>
       <Routes />
-    </AppProvider>
     <GlobalStyles />
   </Router>
 );
