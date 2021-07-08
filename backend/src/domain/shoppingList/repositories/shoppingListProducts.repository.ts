@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { Repository, EntityRepository } from 'typeorm';
 import { ShoppingListProducts } from '../entities/shoppingListProducts.entity';
 import { CreateShoppingListProductDTO } from '../dtos/createShoppingListProduct.dto';
@@ -8,24 +8,38 @@ export class ShoppingListProductsRepository extends Repository<ShoppingListProdu
   async getAllProductsFromShoppingList(
     shoppingListId: number,
   ): Promise<ShoppingListProducts[]> {
-    return this.find({ shoppingListId });
+    try {
+      return this.find({ shoppingListId });
+    } catch (error) {
+      throw new BadRequestException('Erro ao buscar produtos da lista');
+    }
   }
 
   async createOrUpdateProducts(
     productsData: CreateShoppingListProductDTO[],
   ): Promise<void> {
-    const createdProducts = productsData.map((product) => this.create(product));
+    try {
+      const createdProducts = productsData.map((product) =>
+        this.create(product),
+      );
 
-    this.save(createdProducts);
+      this.save(createdProducts);
 
-    return;
+      return;
+    } catch (error) {
+      throw new BadRequestException('Erro ao criar/alterar produtos da lista');
+    }
   }
 
   async deleteProducts(
     productsToRemove: ShoppingListProducts[],
   ): Promise<void> {
-    await this.remove(productsToRemove);
+    try {
+      await this.remove(productsToRemove);
 
-    return;
+      return;
+    } catch (error) {
+      throw new BadRequestException('Erro ao remover produtos da lista');
+    }
   }
 }

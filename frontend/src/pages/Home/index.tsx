@@ -22,6 +22,7 @@ import {
 
 import { apiService } from '../../services/api.service'
 import { ShoppingList } from '../../interfaces/shoppingList.interface'
+import { numberFormat } from '../../helpers/numberFormat'
 
 export const Home: FC = () => {
   const [createdLists, setCreatedLists] = useState<ShoppingList[]>([])
@@ -119,7 +120,7 @@ export const Home: FC = () => {
                       <h2>{list.description}</h2>
                     </>
                   )}
-                  {list.totalPrice && <h2>Preço total: R$ {list.totalPrice}</h2>}
+                  {list.totalPrice && <h2>Preço total: R$ {numberFormat(list.totalPrice)}</h2>}
                 </CardContent>
               </ListDetailLink>
               <CardActions>

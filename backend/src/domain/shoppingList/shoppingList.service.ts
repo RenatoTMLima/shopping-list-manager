@@ -71,8 +71,6 @@ export class ShoppingListService {
       (older) => !products.find((product) => product.id === older.id),
     );
 
-    console.log(productsToRemove);
-
     await this.shoppingListProductsRepository.deleteProducts(productsToRemove);
 
     await this.shoppingListProductsRepository.createOrUpdateProducts(products);

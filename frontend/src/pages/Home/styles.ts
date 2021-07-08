@@ -92,6 +92,10 @@ export const CreatedListContainer = styled.div`
     margin: 5px 0;
   }
 
+  & .MuiCard-root:hover {
+    box-shadow: 0px 5px 8px -3px rgba(0,0,0,0.71);
+  }
+
   & .MuiTextField-root {
     margin: 5px 0;
   }

@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { Repository, EntityRepository } from 'typeorm';
 import { ShoppingList } from '../entities/shoppingList.entity';
 import { CreateShoppingListDTO } from '../dtos/createShoppingList.dto';
@@ -9,10 +9,7 @@ export class ShoppingListRepository extends Repository<ShoppingList> {
     try {
       return this.find();
     } catch (error) {
-      throw new HttpException(
-        'Error trying to retrieve the shopping cart data',
-        HttpStatus.BAD_REQUEST,
-      );
+      throw new BadRequestException('Erro ao buscar listas de compras');
     }
   }
 
@@ -20,24 +17,29 @@ export class ShoppingListRepository extends Repository<ShoppingList> {
     try {
       return this.findOne(id, { relations: ['products'] });
     } catch (error) {
-      throw new HttpException(
-        'Error trying to retrieve the shopping cart data',
-        HttpStatus.BAD_REQUEST,
-      );
+      throw new BadRequestException('Erro ao buscar a lista de compras');
     }
   }
 
   async createOrUpdateShoppingList(
     shoppingListData: CreateShoppingListDTO,
   ): Promise<ShoppingList> {
-    const createdShoppingList = this.create(shoppingListData);
+    try {
+      const createdShoppingList = this.create(shoppingListData);
 
-    return this.save(createdShoppingList);
+      return this.save(createdShoppingList);
+    } catch (error) {
+      throw new BadRequestException('Erro ao criar/atualizar lista de compras');
+    }
   }
 
   async deleteShoppingList(id: number): Promise<void> {
-    await this.delete(id);
+    try {
+      await this.delete(id);
 
-    return;
+      return;
+    } catch (error) {
+      throw new BadRequestException('Erro ao remover lista de compras');
+    }
   }
 }

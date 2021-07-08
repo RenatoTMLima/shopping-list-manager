@@ -1,5 +1,4 @@
-import { HttpException, HttpService, Injectable } from '@nestjs/common';
-import { Product } from './interfaces/product.interface';
+import { BadRequestException, HttpService, Injectable } from '@nestjs/common';
 import { ProductResponseDTO } from './dtos/productResponse.dto';
 
 @Injectable()
@@ -14,8 +13,7 @@ export class ProductsRepository {
 
       return response.data;
     } catch (error) {
-      const { statusCode, message } = error.response.data;
-      throw new HttpException(message, statusCode);
+      throw new BadRequestException('Erro ao buscar produtos');
     }
   }
 
@@ -32,8 +30,7 @@ export class ProductsRepository {
 
       return response.data;
     } catch (error) {
-      const { statusCode, message } = error.response.data;
-      throw new HttpException(message, statusCode);
+      throw new BadRequestException('Erro ao buscar produtos');
     }
   }
 }
